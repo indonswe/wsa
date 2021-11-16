@@ -8,6 +8,9 @@ import { useState } from 'react/cjs/react.development';
 const Skill = () => {
     const [skills, setSkills] = useState([]);
     const [loadData, setLoadData] = useState(false);
+    const [showDetails, setShowDetails] = useState(false);
+    const studentDefaultData = {id: 0, Name: "", Title: "", Email: "" }
+    const [student, setStudent] = useState(studentDefaultData);
 
     useEffect(()=> {
         console.log("useEffect has been executed!");
@@ -82,6 +85,73 @@ const Skill = () => {
                 </form> 
             </Fragment>
         );
+    };
+
+    const TableHeader = () => {
+        return (
+        <thead>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Action</td>
+        </thead>
+        );
+    };
+    const TableAction = (props) => {
+
+        const showData = () => {
+            setShowDetails(true);
+            console.log("SHOW DATA",props.student);
+            setStudent(props.student);
+        };
+    
+        return (<button type="button" className="btn btn-primary" onClick={showData} >Details</button>);
+    
+    };
+
+
+    const TableRow = (props) => {
+        return(
+        <tbody>
+            {
+                props.list.map((student) => (
+                <tr key={student.id}>
+                    <td>{student.id}</td>
+                    <td>{student.name}</td>
+                    <td>{student.email}</td>
+                    <td><TableAction student={student} /></td>
+                </tr>
+                    ) )
+            }
+        </tbody>
+        );
+    };
+
+    const ShowStudentDetails = () => {
+
+        console.log("Pressed", showDetails);
+        if(showDetails){
+            return(
+                <div className="card">
+                    <div className="card-header bg-info text-white">
+                        Student Information
+                    </div>
+                    <div className="card-body">
+                        <h5 className="card-title">Country and City</h5>
+                        <p className="card-text">ID: {student.id}</p>
+                        <p className="card-text">Name: {student.firstName}</p>
+                        <p className="card-text">Email: {student.email}</p>
+                    </div>
+                    <div className="card-footer">
+                        <button type="button" className="btn btn-danger" onClick={()=> {setShowDetails(false); setStudent(studentDefaultData)}}>Close</button>
+                    </div>
+                </div>
+            );
+        } else {
+            return ("");
+        }
+        
+    
     };
 
     return (
