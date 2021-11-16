@@ -54,9 +54,27 @@ const Skill = () => {
                <form onSubmit={handleSubmit(saveData)}>
                     <div className="row">
                         <div className="col">
-                            <input type="text" className="form-control" {...register("title", { required: true } )}  placeholder="Enter Title" />
+                            <input type="text" className="form-control" {...register("firstName", { required: true } )}  placeholder="Enter First Name" />
+                            {errors.title && <span className="text-danger">Firstname is required!</span>}
+                        </div>
+                        <div className="col">
+                            <input type="text" className="form-control" {...register("lastName", { required: true } )}  placeholder="Enter Last Name" />
+                            {errors.title && <span className="text-danger">Lastname is required!</span>}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                        <input type="text" className="form-control" {...register("email", { required: true } )}  placeholder="Enter Email" />
+                            {errors.title && <span className="text-danger">Email is required!</span>}
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
+                        <input type="text" className="form-control" {...register("title", { required: true } )}  placeholder="Enter Title" />
                             {errors.title && <span className="text-danger">Title is required!</span>}
                         </div>
+                    </div>
+                    <div className="row">
                         <div className="col">
                             <button type="submit" className="btn btn-success">+</button>
                         </div>
