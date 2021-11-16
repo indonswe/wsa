@@ -54,6 +54,7 @@ const Skill = () => {
         return (
             <Fragment>
                 <h5>My Form</h5>
+                <br/>
                <form onSubmit={handleSubmit(saveData)}>
                     <div className="row">
                         <div className="col">
@@ -79,6 +80,7 @@ const Skill = () => {
                     </div>
                     <div className="row">
                         <div className="col">
+                        <br/>
                             <button type="submit" className="btn btn-success">+</button>
                         </div>
                     </div>
@@ -159,6 +161,11 @@ const Skill = () => {
             <h3>Fullstack Developer Skills</h3>
             <ShowData skills={skills} />
             <Form />
+            <br/>
+            <table className="table .table-striped">
+            <TableHeader />
+            <TableRow list={skills} />
+            </table>
         </div>
     );
 };
