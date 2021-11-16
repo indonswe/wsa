@@ -28,7 +28,7 @@ const Person = () => {
                 <BrowserRouter>
         <nav>
           <h1>My Articles</h1>
-          <NavLink exact to="/">Welcome</NavLink>
+          <NavLink exact to="/Welcome">Welcome</NavLink>
           <NavLink to="/Person">About</NavLink>
           
         </nav>
